@@ -1,4 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import 'rbx/index.css';
+import { Button, Container, Title } from 'rbx';
+
+const ProductCard = ({ product }) => (
+ <Container>
+  <img src={"data/products/".concat(product.sku + "_1.jpg")} />
+  <Title>
+      { product.title } 
+    </Title>
+  </Container>
+);
 
 const App = () => {
   const [data, setData] = useState({});
@@ -14,7 +25,7 @@ const App = () => {
 
   return (
     <ul>
-      {products.map(product => <li key={product.sku}>{product.title}</li>)}
+      {products.map(product => <ProductCard key={ product.sku } product={ product }/>)}
     </ul>
   );
 };
