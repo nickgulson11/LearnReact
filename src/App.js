@@ -8,8 +8,18 @@ const ProductCard = ({ product }) => (
   <Title>
       { product.title } 
     </Title>
+    { displaySizes() }
   </Container>
 );
+
+const sizes = ["XL", "L", "M", "S"];
+
+const displaySizes = () => (
+  <Container>
+    {sizes.map(size => <Button> {size} </Button>)}
+  </Container>
+);
+
 
 const App = () => {
   const [data, setData] = useState({});
