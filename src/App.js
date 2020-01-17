@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import 'rbx/index.css';
-import { Button, Container, Title } from 'rbx';
+import { Button, Container, Title, Column } from 'rbx';
 
 const ProductCard = ({ product }) => (
  <Container>
@@ -8,9 +8,16 @@ const ProductCard = ({ product }) => (
   <Title>
       { product.title } 
     </Title>
+    <Title>
+      { product.description } 
+    </Title>
+    <Title>
+      ${ product.price } 
+    </Title>
     { displaySizes() }
   </Container>
 );
+
 
 const sizes = ["XL", "L", "M", "S"];
 
@@ -20,6 +27,16 @@ const displaySizes = () => (
   </Container>
 );
 
+/* const displayInventory = ({ products }) => (
+  <Container>
+      <Title size = {1}>
+        Gulson Gear Co.
+      </Title>
+      <Column.Group multiline>
+        {products.map( product => <Column size = "one-third"><ProductCard key={ product.sku } product={ product }/></Column>)} 
+      </Column.Group>  
+  </Container>
+) */
 
 const App = () => {
   const [data, setData] = useState({});
@@ -34,9 +51,14 @@ const App = () => {
   }, []);
 
   return (
-    <ul>
-      {products.map(product => <ProductCard key={ product.sku } product={ product }/>)}
-    </ul>
+    <Container>
+      <Title size = {1}>
+        Gulson Gear Co.
+      </Title>
+      <Column.Group multiline>
+        {products.map( product => <Column size = "one-third"><ProductCard key={ product.sku } product={ product }/></Column>)} 
+      </Column.Group>  
+    </Container>
   );
 };
 
